@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+  <title>Exemplo 2 - Dificuldades do DOM e Javascript</title>
+  <script type="text/javascript" src="bower_components\jquery\dist\jquery.js"></script>
+  </head>
+<body>
+  <button class="botao-grava">Novo</button>
+  <p class="contatos">Contatos cadastrados: 0</p>
+  
+  
+  <script type="text/javascript">
+    var contatos = $('.contatos');
+    contatos.data('total', 0);
+    $('.botao-grava').click(function(){
+      var total = contatos.data('total') + 1;
+      contatos.data('total', total);
+      contatos.text('Contatos cadastrados: ' + total);
+    
+    });
+
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Exemplo 2 - Dificuldades do DOM e Javascript</title>
+    <script type="text/javascript" src="bower_components\jquery\dist\jquery.js"></script>
+  </head>
+  <body>
+
+    <p>
+      Quanto é <input class="numero"> vezes <input class="numero">
+    </p>
+    <p>
+      Resultado: <span class="resultado"></span>
+    </p>
+
+
+    <script type="text/javascript">
+
+      var numerosE1 = $('.numero');
+      $(numerosE1).on('keyup', function(){
+        var resultado = 1;
+        $.each(numerosE1, function() {
+          resultado *= $(this).val();
+        });
+        $('.resultado').text(resultado)
+      });
+
+    </script> 
+
+  </body>
+</html>
