@@ -16,6 +16,10 @@ var contatos = [
   {_id: 4, 
     nome: 'Contato exemplo 4',
     email: 'cont4@empresa.com.br'
+  },
+  {_id: 5, 
+    nome: 'Marcelino Pinheiro',
+    email: 'masp@masp.com.br'
   }
 ];
 
