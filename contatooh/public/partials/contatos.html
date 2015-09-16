@@ -8,9 +8,7 @@
   {{mensagem.texto}}
 </p>
 
-<button ng-click="incrementa()" class="btn btn-primary">
-  Novo
-</button>
+<a ng-href="#/contato" class="btn btn-primary">Novo Contato</a>
 
 <input ng-model="filtro" type="search" placeholder="parte do nome">
 
@@ -28,7 +26,7 @@
     </tr>
     <tr ng-repeat="contato in contatos | filter: filtro">
       <td>
-        <a>{{contato.nome}}</a>
+        <a ng-href="#/contato/{{contato._id}}">{{contato.nome}}</a>
       </td>
       <td>{{contato.email}}</td>
       <td class="text-center">
