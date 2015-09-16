@@ -1,32 +1,34 @@
 //contatooh/app/controllers/contato.js
 
+var ID_CONTATO_INC = 5;
+
 var contatos = [
-  {_id: 1, 
-    nome: 'Contato exemplo 1',
-    email: 'cont1@empresa.com.br'
-  },
-  {_id: 2, 
-    nome: 'Contato exemplo 2',
-    email: 'cont2@empresa.com.br'
-  },  
-  {_id: 3, 
-    nome: 'Contato exemplo 3',
-    email: 'cont3@empresa.com.br'
-  },  
-  {_id: 4, 
-    nome: 'Contato exemplo 4',
-    email: 'cont4@empresa.com.br'
-  },
-  {_id: 5, 
-    nome: 'Marcelino Pinheiro',
-    email: 'masp@masp.com.br'
-  }
+{_id: 1, 
+  nome: 'Contato exemplo 1',
+  email: 'cont1@empresa.com.br'
+},
+{_id: 2, 
+  nome: 'Contato exemplo 2',
+  email: 'cont2@empresa.com.br'
+},  
+{_id: 3, 
+  nome: 'Contato exemplo 3',
+  email: 'cont3@empresa.com.br'
+},  
+{_id: 4, 
+  nome: 'Contato exemplo 4',
+  email: 'cont4@empresa.com.br'
+},
+{_id: 5, 
+  nome: 'Marcelino Pinheiro',
+  email: 'masp@masp.com.br'
+}
 ];
 
 module.exports = function() {
-  
+
   var controller = {};
-  
+
   controller.listaContatos = function(req, res) {
     res.json(contatos);
   };
@@ -53,6 +55,30 @@ module.exports = function() {
 
     res.status(204).end();
   };
+
+  controller.salvaContato = function(req, res){
+    var contato = req.body;
+    contato = contato._id ?
+      atualiza(contato) :
+      adiciona(contato);
+    res.json(contato)
+  };
+
+  function adiciona(contatoNovo) {
+    contatoNovo._id = ++ID_CONTATO_INC;
+    contatos.push(contatoNovo);
+    return contatoNovo;
+  }
+
+  function atualiza(contatoAlterar) {
+    contatos = contatos.map(function(contato){
+      if(contato._id == contatoAlterar._id){
+        contato = contatoAlterar;
+      }
+      return contato;
+    });
+    return contatoAlterar;
+  }
 
 
   return controller;

@@ -1,7 +1,7 @@
 //public/js/controllers/ContatosController.js
 
 angular.module('contatooh').controller('ContatosController', 
-    function($scope, $resource){
+    function(Contato, $scope){
 
       $scope.mensagem = {texto: ''};
 
@@ -9,7 +9,7 @@ angular.module('contatooh').controller('ContatosController',
 
       $scope.filtro = "";
 
-      var Contato = $resource('/contatos/:id');
+      //var Contato = $resource('/contatos/:id');  Eliminado devido a criação de factory (service)
 
       function buscaContatos() {
         Contato.query(
